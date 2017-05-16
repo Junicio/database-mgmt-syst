@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1494953826 source:/home/comppet/Desktop/Esdras/database_mgmt_syst/main.c
+	<stdio.h>
+	<stdlib.h>
+	"record.h"
+
+1494953848 /home/comppet/Desktop/Esdras/database_mgmt_syst/record.h
+	<stdio.h>
+
