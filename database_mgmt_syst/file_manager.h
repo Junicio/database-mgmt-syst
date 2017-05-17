@@ -3,6 +3,7 @@
 
 
 typedef struct {
+    int page id;		
     int disk_block;             // Qual bloco do disco a página se encontra
     int free_space;             // Quantidade de espaço livre que a página contém
     Directory_pages* next;      // Próxima página do diretório de página
@@ -16,4 +17,3 @@ typedef struct {
 } Heap_dictionary;
 
 
-// Dicionário no catálogo
