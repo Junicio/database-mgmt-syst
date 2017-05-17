@@ -4,7 +4,7 @@
 
 typedef struct {
     int is_free;
-    int page_id;
+    //int page_id;
 } Blocks_info;
 
 
@@ -24,7 +24,12 @@ int dsm_init(int num_blocks);
 // Retorna endereço do novo bloco e atualiza informações no blocks_info
 int cr8_block(int page_id);
 
+// Realiza a leitura a partir de o endereço
+Page read_block(int disk_block);
+
+// Realiza a persistência dos dados da página no bloco
+int write_block(Page* page);
 
 // Libera o espaço do block para outra página
-int free_block(int page_id);
+int free_block(int block_address);
 

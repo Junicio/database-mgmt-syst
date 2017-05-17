@@ -8,10 +8,12 @@ Page* memoria;
 #define MEM_SIZE 10
 
 
+
 typedef struct {
     int pin_count;
     int dirt_bit;
     Page* frame;       // Referencia para o frame das quais as informações se referem
+    int disk_block;
 } Frame_info;
 
 typedef struct {
@@ -37,8 +39,10 @@ int check_page(int page_id);
 // Verifica se há espaço na memoria e chama a política de substituição se necessário
 Page* check_memory_space();
 
+
 // Política de substituição
 Page* clock_policies();
+
 
 // Adiciona página na memoria a partir do seu endereço. Atraves de métodos do dsm
 Page add_page_memory(int disk_block);
@@ -48,3 +52,25 @@ Page add_page_memory(int disk_block);
 int save_page(Page* frame);
 
 
+// Remove registro (é necessário busca-lo antes no req_record) e chama atualizaçao do file manager
+int rmv_record(int page_id, int chave);
+
+
+// Atualiza registro é necessário buscar para ver a diferença
+int update_record(int page_id, int num_slot, Record record);
+
+
+// Retorna o frame que possui a mesma página de um bloco
+int num_frame(int disk_block);
+
+
+// Atualiza dirt bit
+void update_dirty_bit(int status);
+
+
+// Atualiza pin count
+void update_pin_count(int num);
+
+
+// Retorna numero do slot registro buscado
+int req_record(int page_id, int chave);
