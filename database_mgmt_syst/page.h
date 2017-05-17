@@ -14,3 +14,4 @@ int inst_record(Record record);
 
 // Remove registro na página e atualiza bitmap
 int remove_record(int num_slot);
+

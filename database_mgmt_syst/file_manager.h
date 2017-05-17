@@ -23,7 +23,7 @@ int fm_load(void);
 // Atualiza numero de slots livres
 int update_free_space(int heap_file, int page_id, int num_update);
 
-// Aloca campos na tabela para nova página e inicializa valores e gera page id
+// Criar nova tabela
 int cr8_heapfile(int heap_id);
 
 
