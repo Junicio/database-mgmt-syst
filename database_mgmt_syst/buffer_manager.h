@@ -11,7 +11,7 @@ Page* memoria;
 typedef struct {
     int pin_count;
     int dirt_bit;
-    Page* slot;       // Referencia para o frame das quais as informações se referem
+    Page* frame;       // Referencia para o frame das quais as informações se referem
 } Frame_info;
 
 typedef struct {
@@ -21,4 +21,30 @@ typedef struct {
 } Buffer_manager;
 
 
-// Lista circular de frames info?
+
+// Aloca os espaços para o buffer manager
+int  bf_init(int num_frames);
+
+
+// Inserção de um novo registro na página
+int cr8_record(Record rcd, int heap_id);
+
+
+// Verifica se a página ja está na memória (Página retornada pelo free_page())
+int check_page(int page_id);
+
+
+// Verifica se há espaço na memoria e chama a política de substituição se necessário
+Page* check_memory_space();
+
+// Política de substituição
+Page* clock_policies();
+
+// Adiciona página na memoria a partir do seu endereço. Atraves de métodos do dsm
+Page add_page_memory(int disk_block);
+
+
+// Salva página no disco (métodos do dsm) e atualiza dados do frame_info
+int save_page(Page* frame);
+
+
