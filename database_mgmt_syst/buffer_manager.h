@@ -33,7 +33,7 @@ int cr8_record(Record rcd, int heap_id);
 
 
 // Verifica se a página ja está na memória (Página retornada pelo free_page())
-int check_page(int page_id);
+int check_page(int heap_id, int page_id);
 
 
 // Verifica se há espaço na memoria e chama a política de substituição se necessário
@@ -53,11 +53,11 @@ int save_page(Page* frame);
 
 
 // Remove registro (é necessário busca-lo antes no req_record) e chama atualizaçao do file manager
-int rmv_record(int page_id, int chave);
+int rmv_record(int heap_file_id, int page_id, int chave);
 
 
 // Atualiza registro é necessário buscar para ver a diferença
-int update_record(int page_id, int num_slot, Record record);
+int update_record(int heap_file_id, int page_id, int num_slot, Record record);
 
 
 // Retorna o frame que possui a mesma página de um bloco
@@ -65,12 +65,12 @@ int num_frame(int disk_block);
 
 
 // Atualiza dirt bit
-void update_dirty_bit(int status);
+void update_dirty_bit(int num_frame, int status);
 
 
 // Atualiza pin count
-void update_pin_count(int num);
+void update_pin_count(int num_frame, int num);
 
 
-// Retorna numero do slot registro buscado
-int req_record(int page_id, int chave);
+// Retorna numero do slot do registro buscado
+int req_record(int heap_file_id, int page_id, int chave);

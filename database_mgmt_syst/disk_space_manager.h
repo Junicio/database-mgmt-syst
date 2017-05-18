@@ -22,7 +22,7 @@ int dsm_init(int num_blocks);
 
 
 // Retorna endereço do novo bloco e atualiza informações no blocks_info
-int cr8_block(int page_id);
+int cr8_block(int disk_block);
 
 // Realiza a leitura a partir de o endereço
 Page read_block(int disk_block);
