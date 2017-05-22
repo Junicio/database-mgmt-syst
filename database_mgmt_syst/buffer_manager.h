@@ -72,5 +72,9 @@ void update_dirty_bit(int num_frame, int status);
 void update_pin_count(int num_frame, int num);
 
 
-// Retorna numero do slot do registro buscado
-int req_record(int heap_file_id, int page_id, int chave);
+// Retorna numero do slot do registro buscado sabendo a página
+int req_record_page(int heap_file_id, int page_id, int chave);
+
+
+// Retorna numero do slot do registro buscado com a página desconhecida
+int req_record(int heap_file_id, int chave);
