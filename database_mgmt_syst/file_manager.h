@@ -1,24 +1,11 @@
 #include <stdio.h>
 
+
+typedef struct directory_pages Directory_pages;
+typedef struct heap_dictionary Heap_dictionary;
+
 int last_page;
-
-typedef struct {
-    int page id;
-    int disk_block;             // Qual bloco do disco a página se encontra
-    int free_space;             // Quantidade de espaço livre que a página contém
-    Directory_pages* next;      // Próxima página do diretório de página
-} Directory_pages;
-
-// Nome do Heap file e seu primeiro endereço
-typedef struct {
-    int heap_id;                    // Id do HeapFile (Tabela)
-    Directory_pages* header_page;   // Endereço da primeira página no diretório
-    Heap_dictionary* next;          // Próxima informações de outra tabela
-} Heap_dictionary;
-
-
-// Carrega informações do file manager
-int fm_load(void);
+Heap_dictionary* HEAP;
 
 // Atualiza numero de slots livres
 int update_free_space(int heap_file, int page_id, int num_update);
@@ -26,6 +13,8 @@ int update_free_space(int heap_file, int page_id, int num_update);
 // Criar nova tabela
 int cr8_heapfile(int heap_id);
 
+// Carrega informações do file manager
+int fm_load(void);
 
 // retorna o id da página com espaço livre ou avisa que nao existe. Além de atualizar free_space etc
 // Considera que ela é chamada somente quando for escrever
